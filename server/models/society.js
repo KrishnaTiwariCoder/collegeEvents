@@ -32,4 +32,4 @@ const societySchema = new mongoose.Schema({
   },
 });
 
-export default new mongoose.model("Societies", societySchema);
+export default new mongoose.model("societies", societySchema);

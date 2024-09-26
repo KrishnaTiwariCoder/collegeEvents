@@ -5,7 +5,7 @@ import {
   getSocietyByID,
   newSocietyController,
 } from "../../controllers/societies/index.js";
-import { authVerify } from "../../common/index.js";
+import { authVerify, isRequestValidated } from "../../common/index.js";
 import { createSocietyValidator } from "../../validators/society.js";
 import { checkAdminRole } from "../../middlewares/index.js";
 
@@ -16,6 +16,7 @@ routerSociety.post(
   authVerify,
   checkAdminRole,
   createSocietyValidator,
+  isRequestValidated,
   newSocietyController
 );
 routerSociety.post("/getSociety/:societyID", authVerify, getSocietyByID);
