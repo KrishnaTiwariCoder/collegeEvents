@@ -12,6 +12,9 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 const preLoadedState = {
   token: localStorage.getItem("token"),
   userLogin: { userInfo: userInfoFromStorage },
+  society: {},
+  events: [],
+  forms: [],
 };
 
 const store = configureStore({

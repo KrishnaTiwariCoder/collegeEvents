@@ -20,6 +20,7 @@ export const newSocietyController = (req, res) => {
         message: "Something went wrong",
         error: err.errorResponse.errmsg,
       });
+      console.log(err);
     });
 };
 

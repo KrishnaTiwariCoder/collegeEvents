@@ -24,7 +24,8 @@ export const _Login = (user) => {
               user,
             },
           });
-          window.location.reload();
+          toast.success("Login successfull!!")
+          // window.location.reload()
         } else {
           dispatch({
             type: authConstants.LOGIN_FAILURE,
@@ -45,6 +46,7 @@ export const _Login = (user) => {
 };
 
 export const _Register = (user) => {
+  console.log(user)
   return (dispatch) => {
     dispatch({
       type: authConstants.USER_REQUEST,
@@ -56,28 +58,31 @@ export const _Register = (user) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          const { token, user } = res.data;
+          console.log(res)
+          const {result , token}  = res.data;
           localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("user", JSON.stringify(result));
           dispatch({
             type: authConstants.LOGIN_SUCCESS,
             payload: {
               token,
-              user,
+              user:result,
             },
           });
-          window.location.reload();
+          toast.success("Account creation success")
+          // window.location.reload();
         } else {
           dispatch({
             type: authConstants.LOGIN_FAILURE,
             payload: { error: res.data.error },
           });
-          toast.error("Invalid details or create an account first ");
+          toast.error(res.message || res.error[0].msg +" "+  res.error[0].path);
         }
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Invalid details or create an account first ");
+        
+        toast.error(err.response.data.message || err.response.data.error[0].msg +" "+  err.response.data.error[0].path);
         dispatch({
           type: authConstants.LOGIN_FAILURE,
           payload: { error: "Something went wrong :(" },

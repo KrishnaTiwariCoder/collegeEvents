@@ -30,6 +30,9 @@ const societySchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: "admins",
   },
+  admins: {
+    type: String,
+  },
 });
 
 export default new mongoose.model("societies", societySchema);
