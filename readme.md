@@ -105,7 +105,7 @@ The application uses JSON Web Tokens (JWT) for secure authentication across admi
 
 ## 🌟 Contact
 
-Your Name - krishnatiwaridtea@gmail.com
+Your Name - Krishna Tiwari
 
 ## 🙏 Acknowledgements
 
